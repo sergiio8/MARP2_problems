@@ -17,18 +17,14 @@ These topics are identified from the algorithms and data structures present in t
 
 ## Repository layout
 
-The repository is intentionally flat:
-
 | Path pattern | Contents |
 | --- | --- |
-| `juez*.cpp` | Individual judge/course exercises |
-| `23.cpp`–`30.cpp` | Additional numbered exercises; `28.cpp` is absent from the current checkout |
-| `juez1b.cpp`, `juez21guardado.cpp` | Alternate or saved variants kept with the coursework |
-| `*.cpp` | Standalone source files; compile one file at a time |
-| Files without an extension | Prebuilt executables committed with the sources |
-| `24.cp`, `tempCodeRunnerFile.cpp` | Scratch/incomplete artifacts; not part of a supported build |
+| `coursework/MARP2/src/judge/*.cpp` | Individual judge/course exercises, including saved variants |
+| `coursework/MARP2/src/numbered/*.cpp` | Additional numbered exercises; `28.cpp` is absent from the current checkout |
+| `coursework/MARP2/artifacts/prebuilt-macos/*` | Prebuilt executables retained as coursework artifacts |
+| `archive/24.cp`, `archive/tempCodeRunnerFile.cpp` | Preserved scratch/incomplete artifacts; not part of a supported build |
 
-The prebuilt executables are Mach-O binaries for Apple ARM64 and are not portable across platforms. The C++ source is the authoritative, inspectable material.
+The prebuilt executables are Mach-O binaries for Apple ARM64 and are not portable across platforms. They are retained as generated artifacts, not source files or build inputs. The C++ source is the authoritative, inspectable material.
 
 ## Prerequisites
 
@@ -44,7 +40,7 @@ Compile a source file into a local build directory:
 
 ```sh
 mkdir -p build
-g++ -std=c++17 -Wall -Wextra juez15.cpp -o build/juez15
+g++ -std=c++17 -Wall -Wextra coursework/MARP2/src/judge/juez15.cpp -o build/juez15
 ```
 
 Run it with the input expected by that exercise:
@@ -58,7 +54,7 @@ The programs are independent and do not share a common command-line interface. B
 To try another solution, repeat the same pattern with its source filename, for example:
 
 ```sh
-g++ -std=c++17 -Wall -Wextra juez21.cpp -o build/juez21
+g++ -std=c++17 -Wall -Wextra coursework/MARP2/src/judge/juez21.cpp -o build/juez21
 ./build/juez21 < input.txt
 ```
 
@@ -71,7 +67,7 @@ This is coursework and a personal problem-solving archive, not a maintained prod
 - inconsistent naming and organization inherited from the original exercises; and
 - a small number of scratch, duplicate, and prebuilt platform-specific files.
 
-Compilation status can vary by source. For example, most standalone solutions compile with the command above, while `juez16.cpp` currently contains a type-mismatch error and `tempCodeRunnerFile.cpp` is an incomplete scratch file. These limitations are documented rather than hidden; solution code and historical artifacts are preserved as committed.
+Compilation status can vary by source. For example, most standalone solutions compile with the command above, while `coursework/MARP2/src/judge/juez16.cpp` currently contains a type-mismatch error. The incomplete scratch file is preserved under `archive/` and is not part of the supported source collection. These limitations are documented rather than hidden; solution code and historical artifacts are preserved as committed.
 
 ## Contributing
 
